@@ -1,0 +1,14 @@
+.container {
+    min-width: 500px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 5px;
+    cursor: pointer;
+}
+
+.container:hover {
+    font-size: 18px;
+    transition: all 0.1s ease;
+}

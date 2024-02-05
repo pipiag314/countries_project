@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.logo {
+    color: var(--text-color);
+}
+
+.links {
+    display: flex;
+    gap: 20px;
+}
+
+
+.links a {
+    color: var(--text-color);
+    text-decoration: none;
+    cursor: pointer;
+}
