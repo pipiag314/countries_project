@@ -33,7 +33,6 @@ const Navbar = () => {
       </div>
       <div className={styles.links}>
         <Link to="/countries">Countries</Link>
-        <Link to="/currency">Currency</Link>
         {/* navbar links here as well*/}
         <button onClick={toggleDarkMode}>Toggle Dark Mode</button>
       </div>

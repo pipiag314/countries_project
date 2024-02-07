@@ -7,6 +7,7 @@
     padding: 20px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 5px;
     overflow: hidden;
+    gap: 15px;
 }
 
 .container:hover {
