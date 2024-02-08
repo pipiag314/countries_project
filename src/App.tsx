@@ -18,12 +18,21 @@ import { getReversGeocoding } from "./api/fetchGeocoding";
 import { getCountryByFullName } from "./api/fetchCountries";
 import AirportsPage from "./pages/AirportsPage/AirportsPage";
 
+import { useCountry } from "./store/store";
+
+
 
 function App() {
+  const getCountries = useCountry((state) => state.getCountries);
+  
   const navigate = useNavigate();
 
   
   useEffect(() => {
+    getCountries() /**fetching all countries and setting into global state */
+    
+
+    // getting users latitude and longitude if we got permission
     navigator.geolocation.getCurrentPosition((position) => {
       const {latitude: lat, longitude: lng} = position.coords
       getReversGeocoding(lat, lng)

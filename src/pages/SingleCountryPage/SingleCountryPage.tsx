@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-import { getSingleCountry } from "../../api/fetchCountries";
+import { getCountryByCode } from "../../api/fetchCountries";
 import { Link, useParams } from "react-router-dom";
 import { CountryInterface } from "../../types/countryTypes";
 import CurrencyCard from "../../components/CurrencyCard";
 import AirportsCard from "../../components/AirportsCard";
-
 import styles from "./SingleCountryPage.module.css";
 import { formatLargeNumber } from "../../utils/forNumberFormatting";
 
@@ -15,23 +14,19 @@ const SingleCountryPage = () => {
 
   useEffect(() => {
     if (!code) return;
-    getSingleCountry(code).then((data) => {
+    getCountryByCode(code).then((data) => {
       const dataFromArray = data[0];
       setCountry(dataFromArray);
     });
   }, [code]);
-
-  if(!country) {
-    return <div>Loading...</div>
-  }
-  
-  console.log(Object.keys(country.currencies)[0]);
   
   return (
     <>
-       <Link to="/countries">
-          <button className={styles.goBack}>go back</button>
-        </Link>
+      <Link to="/countries">
+        <button className={styles.goBack}>go back</button>
+      </Link>
+      {country ? (
+        // rendering when country is defined 
       <div className={styles.container}>
         <div className={styles.info_section}>
           <div className={styles.info_section_img}>
@@ -64,6 +59,10 @@ const SingleCountryPage = () => {
         </div>
         
       </div>
+      ) : (
+        <div>Loading...</div>
+      )}
+
     </>
   );
 };

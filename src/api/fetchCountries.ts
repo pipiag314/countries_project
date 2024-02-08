@@ -1,13 +1,4 @@
-export const getAllCountries = async () => {
-    try {
-        const res = await fetch(`${import.meta.env.VITE_COUNTRIES_API}all`);
-        return res.json();
-    } catch (error) {
-        console.log("Error occured while fetching data from Countries API: ", error)        
-    }
-}
-
-export const getSingleCountry = async (code: string) => {
+export const getCountryByCode = async (code: string) => {
     try {
         const res = await fetch(`${import.meta.env.VITE_COUNTRIES_API}alpha/${code}`);
         return res.json();
