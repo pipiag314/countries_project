@@ -6,9 +6,9 @@ import { useCountry } from "../../store/store";
 
 
 const CountryPage = () => {
-  const countries = useCountry((state) => state.countries);
-  const filteredCountries = useCountry((state) => state.filteredCountries);
-
+  // getting states from global useCountry store
+  const countries = useCountry((state) => state.countries); 
+  const filteredCountries = useCountry((state) => state.filteredCountries); 
   const filterCountriesBySearch = useCountry(state => state.filterCountriesBySearch)
   
   const inputRef = useRef<null | HTMLInputElement>(null);
