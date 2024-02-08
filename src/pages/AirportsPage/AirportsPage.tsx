@@ -14,7 +14,6 @@ const AirportsPage = () => {
         if(!code) return;
         getAirportsByCountryCode(code)
             .then(data => {
-                console.log(data);
                 setAirports(data);
             })
     }, [])

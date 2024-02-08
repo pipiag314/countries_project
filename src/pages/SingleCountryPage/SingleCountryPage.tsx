@@ -25,6 +25,8 @@ const SingleCountryPage = () => {
     return <div>Loading...</div>
   }
   
+  console.log(Object.keys(country.currencies)[0]);
+  
   return (
     <>
        <Link to="/countries">
