@@ -1,29 +1,22 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import CountryCard from "../../components/CountryCard";
 import styles from "./CountryPage.module.css";
-import { getAllCountries } from "../../api/fetchCountries";
 import { Link } from "react-router-dom";
-import { filterCountries } from "../../utils/forFiltering";
-import { CountriesType } from "../../types/countryTypes";
+import { useCountry } from "../../store/store";
+
 
 const CountryPage = () => {
-  const [countries, setCountries] = useState<null | CountriesType>(null);
-  const [filteredCountries, setFilteredCountries] =
-    useState<null | CountriesType>(null);
+  const countries = useCountry((state) => state.countries);
+  const filteredCountries = useCountry((state) => state.filteredCountries);
+
+  const filterCountriesBySearch = useCountry(state => state.filterCountriesBySearch)
+  
   const inputRef = useRef<null | HTMLInputElement>(null);
 
-  useEffect(() => {
-    getAllCountries().then((data) => {
-      setCountries(data as unknown as CountriesType);
-      setFilteredCountries(data as unknown as CountriesType);
-    });
-  }, []);
 
   const handleChange = () => {
-    if (!countries) return;
-    const filtered = filterCountries(countries, inputRef);
-    if (!filtered) return;
-    setFilteredCountries(filtered);
+    if(!inputRef.current) return /**making sure that inputRef is not null */
+    filterCountriesBySearch(countries, inputRef.current?.value) /**then calling filter function */
   };
 
   return (
